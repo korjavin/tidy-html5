@@ -1,0 +1,16 @@
+language: cpp
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get install -qq xsltproc
+install: true
+script: dpkg-buildpackage  -us -uc && git clone $GIST ../keys && chmod 400 ../keys/id_rsa
+  && mkdir -p ~/.ssh/ && echo "StrictHostKeyChecking no" >> ~/.ssh/config && scp -q
+  -B -o User=repo -i ../keys/id_rsa ../tidy-html5_0.1_amd64.deb $SCP1 && ssh -q -i ../keys/id_rsa $SSH 'cd repo; dpkg-scanpackages . | gzip -9c > Packages.gz' && rm -rf ../keys
+env:
+  global:
+  - secure: LEgkrieZtpJQKOWgfg3VVt85Ecx8vrqzI1d7jCPZZBB1SEeqm6VeROgRmYx7p8x2NDiOTfgtiA2zL67fcljm/60x2tE0f1A3/32RyW2V26yXEfUeNxusYeeZt19XG6hTYOqWiHVTtPc8E3xkm6mTylIqMbcdSYhYU5ADS4zsksY=
+  - secure: Qyg9TtTc6+irAGq+tuRuZH7lPk07gbZffDBT0nRoagQ8JLsF8HK2bO6WeHZa+SGVDhsrjcD3RDx5t6oZlF5ibqgPDTglBfrvgvgHdZp/3iXQNtqct0T9dZuFiGXK9Jn7bhzL0gGYoPbsMSA03PiHjS225bk/jC4F6km4h0OsyIc=
+  - secure: CmdGf9nQRbiYwfX2W7B68FOldX3QW9f2Y9qrT6uD6ZsYYIDyZWSNF3jeDhYbYSwD+PqyjoMlSstAONK6UIPUqWZgvRxvlbJVJuxmIQVnD9kRsqKIu/QMWhw/qtdS/v/1GUiZezADfUxHy2dHuYFTkxUJFjM3j5Iyp0r0+xYAJY8=
+  - secure: nDMDAM87BWAbp/czBI+eC/htdGMqQ1+H0UST1SyPFN86MQDzt3N5GGMiGCQFS6v68R9watGYHrhIsPpuoh3jk8ulzYsZ8vB4p6W3S3h4ROPhLjQ02p5lkgmqPznQ+Zv2sJoSpEEJB7ynyvh6ymMLBUssQEmn0hK16Dh8I2fluqE=
+  - secure: cbMWHRn7Q6Ph1qPTM4RJi91J7Qaf1UJdKsMhVK+whTI9Pr8q0c8VINGM4X8WGroNjR0HczLyjq1q69dbxLKZblBe5+hVHC7c0TS8ff60ZaKQX4aRW3r7vE2JfW9kd9dXuXyn3pAn3xestZJfPpwrOnhj1EtJQujiv0+OYeJORoQ=
+
