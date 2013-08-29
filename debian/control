@@ -1,0 +1,16 @@
+Source: tidy-html5
+Section: web
+Priority: extra
+Maintainer: Korjavin Ivan <korjavin@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), xsltproc
+Standards-Version: 3.9.4
+Homepage: https://github.com/w3c/tidy-html5
+#Vcs-Git: git://git.debian.org/collab-maint/tidy-html5.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/tidy-html5.git;a=summary
+
+Package: tidy-html5
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: HTML Tidy for HTML5
+ This repo is an experimental fork of the code from tidy.sourceforge.net. This source code in this version supports processing of HTML5 documents. The changes for HTML5 support started from a patch developed by Björn Höhrmann.
+ For more information, see w3c.github.com/tidy-html5
